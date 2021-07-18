@@ -1,0 +1,17 @@
+connector_image: airbyte/source-nytimes-books-api:dev
+tests:
+  spec:
+    - spec_path: "spec.json"
+  connection:
+    - config_path: "secrets/config.json"
+      status: "succeed"
+    - config_path: "secrets/invalid_config.json"
+      status: "failed"
+  discovery:
+    - config_path: "secrets/config.json"
+  basic_read:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "fullrefresh_configured_catalog.json"
+  full_refresh:
+    - config_path: "secrets/config.json"
+      configured_catalog_path: "fullrefresh_configured_catalog.json"
